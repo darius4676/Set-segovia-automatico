@@ -1,0 +1,34 @@
+SET SEGOVIA - paquete con actualizacion automatica
+===================================================
+
+Que hace
+- Cada 5 minutos, GitHub lee el horario oficial de Renfe, el panel de Adif y el
+  feed en directo de Renfe, y publica una web con todos los trenes de
+  Segovia-Guiomar (hoy y los dos dias siguientes).
+- Esa web se instala en el movil como app, con tu icono.
+
+Como ponerlo en marcha (una sola vez, mejor desde un ordenador)
+1. Crea una cuenta gratuita en github.com.
+2. Pulsa "New repository". Nombre: set-segovia. Marca "Public". Crealo.
+3. Pulsa "uploading an existing file" y arrastra TODO el contenido de esta
+   carpeta, incluida la carpeta ".github". Pulsa "Commit changes".
+4. Ve a Settings > Pages. En "Source" elige "GitHub Actions".
+5. Ve a la pestana Actions > "Actualizar trenes" > "Run workflow".
+   Espera 1-2 minutos a que salga el tick verde.
+6. Tu app estara en: https://TU-USUARIO.github.io/set-segovia/
+7. Abrela en Chrome (Android) o Safari (iPhone) y elige "Instalar aplicacion"
+   o "Anadir a pantalla de inicio".
+
+Si algo falla
+- Abre https://TU-USUARIO.github.io/set-segovia/debug/adif.txt y
+  .../debug/gtfs_archivos.txt y mandame una captura o el texto. Con eso ajusto
+  el lector. En la propia app, la franja gris de arriba muestra los "avisos".
+
+Limitaciones que conviene saber
+- GitHub puede retrasar las ejecuciones programadas unos minutos.
+- GitHub desactiva las tareas programadas si el repositorio pasa 60 dias sin
+  actividad. Si te llega un aviso por correo, entra en Actions y pulsa
+  "Enable workflow".
+- Las horas reales que anotas a mano se guardan en tu movil, no en la web.
+- Velocidad y distancia solo salen si el feed de Renfe responde y sus trenes se
+  pueden casar con el horario. Si no, la app pone "No disponible".

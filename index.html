@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SET SEGOVIA</title>
+<meta name="application-name" content="SET SEGOVIA">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#8a1c3a">
+<meta name="apple-mobile-web-app-title" content="SET SEGOVIA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#f5f3ee;--card:#fff;--ink:#1d1b18;--mut:#6b655c;--line:#e0dbd0;--acc:#8a1c3a;--ok:#1b7a43;--bad:#b3261e;--warn:#a15c00;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1420;--card:#161d2b;--ink:#f1ece2;--mut:#a39b8d;--line:#283249;--acc:#e8809c;--ok:#5ccb8a;--bad:#ff8a80;--warn:#ffb74d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1420;--card:#161d2b;--ink:#f1ece2;--mut:#a39b8d;--line:#283249;--acc:#e8809c;--ok:#5ccb8a;--bad:#ff8a80;--warn:#ffb74d;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:14px 12px 40px;max-width:640px;margin:0 auto}
+h1{font-size:22px;margin:4px 0 2px}
+.sub{color:var(--mut);font-size:13px;margin:0 0 12px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+.tabs button,.tabs label{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 13px;font-size:14px}
+.tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.tabs input{border:0;background:transparent;color:var(--ink);font-size:14px;width:118px}
+.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:10px;padding:9px 12px;font-size:13px;color:var(--mut);margin:8px 0 12px}
+.sum{font-size:14px;margin:6px 2px 10px;font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.num{font-size:26px;font-weight:800;letter-spacing:.5px}
+.kind{display:inline-block;font-size:11px;font-weight:700;background:var(--acc);color:#fff;border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+.org{color:var(--mut);font-size:14px}
+.sched{text-align:right}.sched b{font-size:22px;display:block}.sched span{font-size:12px;color:var(--mut)}
+.cd{font-size:14px;font-weight:700;margin-top:8px;color:var(--acc)}.lk{display:inline-block;font-size:13px;margin-top:4px;color:var(--acc)}
+.old{color:var(--mut);font-size:16px}.late{color:var(--bad);font-style:normal}.est{margin-top:8px;font-size:13px;color:var(--mut)}.est input{font-size:16px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:4px 6px}
+#list{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}#list:empty{display:none}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}.tl{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:8px 10px}.tl small{display:block;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}.tl b{font-size:20px}.tl.na b{font-size:14px;color:var(--mut)}.nb{font-size:12px;color:var(--mut);margin-top:6px}
+.hero{background:linear-gradient(135deg,#8a1c3a,#35206b);color:#fff;border-radius:16px;padding:14px 16px;margin:10px 0 12px}
+.hero .hl{font-size:12px;letter-spacing:.8px;text-transform:uppercase;opacity:.8}
+.hero .hr{display:flex;align-items:center;gap:10px;margin-top:4px}.hero .hr b{font-size:30px;letter-spacing:.5px}.hero .kind{margin:0}
+.hero .ho{font-size:14px;opacity:.9}.hero .hb{font-size:46px;font-weight:800;line-height:1.1;margin-top:6px}.hero .hc{font-size:17px;font-weight:700}
+.s-AVLO{border-left-color:#e8590c!important}.s-ALVIA{border-left-color:#2f6fdc!important}.s-AVANT{border-left-color:#1f9d55!important}.s-INTERCITY{border-left-color:#6b7280!important}.s-AVE{border-left-color:#b3261e!important}
+.row{border-left:4px solid transparent;display:grid;grid-template-columns:74px 90px 1fr 16px 58px;gap:8px;padding:12px 10px;border-bottom:1px solid var(--line);cursor:pointer;align-items:start}
+.row.hd{cursor:default;font-size:12px;color:var(--mut);padding:8px 10px;text-transform:uppercase;letter-spacing:.4px}
+.row.op{background:rgba(138,28,58,.10)}
+.tm{font-size:16px;font-weight:800}.tn{display:flex;flex-direction:column;align-items:flex-start;gap:3px}.tn b{font-size:17px}.tn .kind{margin:0}
+.og{font-size:14px}.rl{font-size:15px;line-height:1.35;text-align:right;white-space:nowrap}.rl small{color:var(--mut);font-size:11px;font-weight:700}.rl b{color:var(--ok)}.vi{font-size:18px;font-weight:700;text-align:right}
+.late.big{color:var(--bad)}.late{color:var(--warn)}
+.k-AVLO{background:#e8590c}.k-ALVIA{background:#2f6fdc}.k-INTERCITY{background:#6b7280}.k-AVANT{background:#1f9d55}.k-AVE{background:#b3261e}.k-OTRO{background:#6b7280}
+.det{padding:6px 12px 14px;border-bottom:1px solid var(--line);background:var(--card)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.box{border:1.5px dashed var(--line);border-radius:12px;padding:8px}
+.box.f{border-style:solid;border-color:var(--ok)}
+.box label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px}
+.box input{width:100%;font-size:22px;font-weight:700;border:0;background:transparent;color:var(--ink);padding:0}
+.box button{margin-top:6px;width:100%;border:1px solid var(--line);background:transparent;color:var(--acc);border-radius:8px;padding:6px;font-size:13px;font-weight:600}
+.bd{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:2px 7px;margin-top:8px}
+.bd.ok{color:var(--ok);border:1px solid var(--ok)}.bd.bad{color:var(--bad);border:1px solid var(--bad)}.bd.w{color:var(--warn);border:1px solid var(--warn)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:14px 0}
+summary{font-weight:700;cursor:pointer}
+form{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+form input,form select{width:100%;font-size:16px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+form .w{grid-column:1/3}form button{grid-column:1/3;background:var(--acc);color:#fff;border:0;border-radius:10px;padding:10px;font-weight:700;font-size:15px}
+.del{background:none;border:0;color:var(--bad);font-size:12px;padding:6px 0 0}
+#st{font-size:12px;color:var(--mut);text-align:center;margin-top:14px}
+
+body{font-size:17px}
+.bar{display:flex;justify-content:space-between;align-items:center;margin:2px 0 10px}
+.st{font-size:27px;font-weight:900;line-height:1.1}.sb{font-size:13px;color:var(--mut)}
+.clk{font-size:36px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--acc)}
+.tabs button{font-size:16px;padding:9px 15px}
+.row{display:block;padding:14px 12px;border-left-width:6px}
+.r1{display:flex;align-items:center;gap:12px}.r2{display:flex;justify-content:space-between;gap:10px;margin-top:6px;align-items:flex-end}
+.tm{font-size:26px;font-weight:900;min-width:76px;font-variant-numeric:tabular-nums}
+.tm s.old{display:block;font-size:14px;font-weight:600}.tm em.late{font-size:26px}
+.tn{flex-direction:row;align-items:center;gap:8px;flex:1}.tn b{font-size:21px}.tn .kind{font-size:12px;padding:3px 8px}
+.vi{margin-left:auto;font-size:28px;font-weight:900;text-align:center;line-height:1}.vi small{display:block;font-size:10px;color:var(--mut);font-weight:700;letter-spacing:.6px}
+.og{font-size:16px;color:var(--mut);flex:1}.rl{font-size:16px;white-space:nowrap;text-align:right}
+</style></head><body>
+<div class="bar"><div><div class="st">Segovia-Guiomar</div><div class="sb">Llegadas Renfe · hora actual</div></div><div class="clk" id="clk">--:--</div></div>
+<div class="tabs" id="tabs"></div>
+<div class="note" id="note"></div>
+<div id="hero"></div>
+<div class="sum" id="sum"></div>
+<div id="list"></div>
+<details><summary>＋ Añadir un tren que falte</summary>
+<form id="f">
+<input class="w" id="fo" placeholder="Origen (p. ej. Madrid Chamartín)" required>
+<input id="fn" placeholder="Nº de tren" inputmode="numeric" required>
+<select id="fk"><option>AVE</option><option>AVLO</option><option>AVANT</option><option>ALVIA</option><option>OTRO</option></select>
+<input id="ft" type="time" required><input id="fv" placeholder="Vía" inputmode="numeric">
+<button type="submit">Añadir a este día</button>
+</form></details>
+<div id="st"></div>
+<script>
+// [fecha, hora programada de llegada, nº tren, tipo, origen, vía] — panel de Adif, 31/10/2026 18:46
+var T=[],META="";
+var $=function(s){return document.querySelector(s)};
+var tm=function(s){var p=s.split(":");return +p[0]*60+ +p[1]};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+function pad(n){return String(n).padStart(2,"0")}
+function ymd(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+function nowHM(){var d=new Date();return pad(d.getHours())+":"+pad(d.getMinutes())}
+var open=null,TODAY=ymd(new Date()),day=TODAY,data={rec:{},extra:[]},db=null,uid=null;
+
+function lsGet(d){try{return JSON.parse(localStorage.getItem("sg_"+d))}catch(e){return null}}
+async function load(){
+  data=lsGet(day)||{rec:{},extra:[]};
+  if(db&&uid){try{var s=await db.collection("data/users/"+uid).doc(day).get();
+    if(s.exists){var x=s.data();data={rec:x.rec||{},extra:x.extra||[]}}}catch(e){}}
+  render();
+}
+async function save(){
+  var m="Guardado solo en este dispositivo";
+  try{localStorage.setItem("sg_"+day,JSON.stringify(data))}catch(e){}
+  if(db&&uid){try{await db.collection("data/users/"+uid).doc(day).set(data);m="Guardado en tu cuenta"}catch(e){}}
+  $("#st").textContent=m;
+}
+function rows(){
+  var a=T.filter(function(x){return x[0]===day}).map(function(x){return{id:x[8]||x[2],t:x[1],n:x[2],k:x[3],o:x[4],v:x[5],e:x[6]||"",p:x[7]}});
+  var b=data.extra.map(function(e){return{id:e.id,t:e.t,n:e.n,k:e.k,o:e.o,v:e.v,x:1}});
+  return a.concat(b).sort(function(p,q){return tm(p.t)-tm(q.t)||p.n.localeCompare(q.n)});
+}
+function dlabel(d){return new Date(d+"T12:00").toLocaleDateString("es-ES",{weekday:"short",day:"numeric",month:"short"})}
+function render(){
+  var ds=[TODAY];T.forEach(function(x){if(ds.indexOf(x[0])<0)ds.push(x[0])});
+  if(ds.indexOf(day)<0)ds.push(day);ds.sort();
+  $("#tabs").innerHTML=ds.map(function(d){return '<button data-d="'+d+'" class="'+(d===day?"on":"")+'">'+dlabel(d)+(d===TODAY?" · hoy":"")+'</button>'}).join("")+
+    '<label>Otro día <input type="date" id="pick" value="'+day+'"></label>';
+  var r=rows(),hasBase=T.some(function(x){return x[0]===day});
+  $("#note").innerHTML=day==="2026-10-30"?"Estos 6 trenes salen de tu captura de pantalla (los únicos visibles), con los retrasos que se veían. Faltan los anteriores y los posteriores: añádelos con «＋».":hasBase
+   ?"Llegadas tomadas del panel oficial de Adif (31/10/2026, 18:46), solo Renfe, sin Ouigo. Es una lista parcial: ese panel muestra únicamente las próximas llegadas y no pude leer sus salidas. Añade con «＋» los trenes que falten."
+   :"Para este día no tengo horario cargado. Añade los trenes con «＋» y anota sus horas reales; quedarán guardados.";
+  if(META)$("#note").innerHTML=META;
+  var nm0=new Date().getHours()*60+new Date().getMinutes(),nxt=null;
+  if(r.length){var pend=r.filter(function(x){return !((data.rec[x.id]||{}).arr)});
+    nxt=day===TODAY?(pend.filter(function(x){var c0=data.rec[x.id]||{};return tm(c0.est||x.e||x.t)>=nm0-5})[0]||null):(pend[0]||null)}
+  $("#hero").innerHTML=nxt?(function(){var c1=Object.assign({},nxt.e?{est:nxt.e}:{},data.rec[nxt.id]||{}),tt=c1.est||nxt.t;
+    return '<div class="hero"><div class="hl">Próximo tren</div><div class="hr"><span class="kind k-'+esc(nxt.k)+'">'+esc(nxt.k)+'</span><b>'+esc(nxt.n)+'</b></div><div class="ho">desde '+esc(nxt.o)+' · vía '+(nxt.v||"–")+'</div><div class="hb">'+esc(tt)+'</div><div class="hc" data-t="'+tt+'"></div></div>'})():"";
+  var done=r.filter(function(x){return (data.rec[x.id]||{}).arr}).length;
+  $("#sum").textContent=r.length?done+" de "+r.length+" trenes con llegada anotada":"";
+  $("#list").innerHTML=r.length?r.map(function(x){
+    var c=Object.assign({},x.e?{est:x.e}:{},data.rec[x.id]||{}),bd="";
+    if(c.arr){var df0=tm(c.arr)-tm(x.t);bd=df0===0?'<span class="bd ok">En hora</span>':df0>0?'<span class="bd bad">+'+df0+' min</span>':'<span class="bd w">−'+(-df0)+' min</span>'}
+    var late=c.est&&c.est!==x.t,df=late?tm(c.est)-tm(x.t):0;
+    var tcell=late?'<s class="old">'+esc(x.t)+'</s> <em class="late'+(df>=15?" big":"")+'">'+esc(c.est)+'</em>':esc(x.t);
+    var op=open===x.id;
+    return '<div class="row s-'+esc(x.k)+(op?" op":"")+'" data-id="'+esc(x.id)+'"><div class="r1"><div class="tm">'+tcell+'</div><div class="tn"><span class="kind k-'+esc(x.k)+'">'+esc(x.k)+'</span><b>'+esc(x.n)+'</b></div><div class="vi"><small>VÍA</small>'+(x.v?esc(x.v):"–")+'</div></div><div class="r2"><div class="og">'+esc(x.o)+'</div><div class="rl"><small>L</small> '+(c.arr?'<b>'+esc(c.arr)+'</b>':"–")+' <small>S</small> '+(c.dep?'<b>'+esc(c.dep)+'</b>':"–")+'</div></div></div>'+
+    (op?'<div class="det"><div class="tiles"><div class="tl"><small>Llegada estimada</small><b>'+esc(c.est||x.t)+'</b></div><div class="tl"><small>Tiempo restante</small><b class="cdv" data-t="'+(c.est||x.t)+'" data-done="'+(c.arr?1:"")+'">–</b></div>'+(x.p?'<div class="tl"><small>Velocidad</small><b>'+(x.p.vel!=null?esc(x.p.vel)+" km/h":"–")+'</b></div><div class="tl"><small>Distancia restante</small><b>'+esc(x.p.dist)+' km</b></div></div><div class="nb">Distancia en línea recta desde la posición del tren (feed de Renfe).</div>':'<div class="tl na"><small>Velocidad</small><b>No disponible</b></div><div class="tl na"><small>Distancia restante</small><b>No disponible</b></div></div><div class="nb">Sin posición en directo para este tren ahora mismo.</div>')+'<div class="grid">'+box(x.id,"arr","Llegada real",c.arr)+box(x.id,"dep","Salida real",c.dep)+'</div><div class="est">Hora estimada si va con retraso: <input type="time" data-id="'+esc(x.id)+'" data-f="est" value="'+(c.est||"")+'"></div>'+bd+(x.x?'<div><button class="del" data-del="'+esc(x.id)+'">Quitar este tren</button></div>':"")+'</div>':"");
+  }).join(""):"";
+}
+function box(id,f,l,v){return '<div class="box'+(v?" f":"")+'"><label>'+l+'</label><input type="time" data-id="'+esc(id)+'" data-f="'+f+'" value="'+(v||"")+'"><button data-now="'+f+'" data-id="'+esc(id)+'">Ahora</button></div>'}
+function setRec(id,f,v){data.rec[id]=data.rec[id]||{};data.rec[id][f]=v;save();render()}
+document.addEventListener("click",function(e){
+  var t=e.target,rw=t.closest?t.closest(".row"):null;
+  if(rw&&!rw.classList.contains("hd")){open=open===rw.dataset.id?null:rw.dataset.id;render()}
+  else if(t.dataset.d){day=t.dataset.d;load()}
+  else if(t.dataset.now)setRec(t.dataset.id,t.dataset.now,nowHM());
+  else if(t.dataset.del){data.extra=data.extra.filter(function(x){return x.id!==t.dataset.del});delete data.rec[t.dataset.del];save();render()}
+});
+document.addEventListener("change",function(e){
+  var t=e.target;
+  if(t.id==="pick"&&t.value){day=t.value;load()}
+  else if(t.dataset&&t.dataset.f)setRec(t.dataset.id,t.dataset.f,t.value);
+});
+$("#f").addEventListener("submit",function(e){
+  e.preventDefault();
+  data.extra.push({id:"x"+Date.now(),n:$("#fn").value.trim(),k:$("#fk").value,o:$("#fo").value.trim(),t:$("#ft").value,v:$("#fv").value.trim()});
+  e.target.reset();save();render();
+});
+function tick(){var n=new Date(),nm=n.getHours()*60+n.getMinutes();
+  document.querySelectorAll(".cdv").forEach(function(el){if(el.dataset.done){el.textContent="Ya llegó";return}if(day!==TODAY){el.textContent="–";return}var d=tm(el.dataset.t)-nm;el.textContent=d>0?d+" min":d===0?"Ahora":"Superada hace "+(-d)+" min"});
+  document.querySelectorAll(".hc").forEach(function(el){if(day!==TODAY){el.textContent="";return}var d=tm(el.dataset.t)-nm;el.textContent=d>0?"llega en "+d+" min":d===0?"llega ahora":"debería haber llegado hace "+(-d)+" min"});
+  document.querySelectorAll(".cd").forEach(function(el){
+    if(day!==TODAY||el.dataset.done){el.textContent="";return}
+    var d=tm(el.dataset.t)-nm;
+    el.textContent=d>0?"Faltan "+d+" min para la hora prevista (según horario, sin retrasos)":d===0?"Llega ahora, según horario":"Hora prevista superada hace "+(-d)+" min · anota la real"})}
+var _r=render;render=function(){_r();tick()};
+function clk(){$("#clk").textContent=new Date().toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})}clk();setInterval(clk,5000);
+setInterval(tick,20000);
+render();load();loadData();setInterval(loadData,60000);
+function loadData(){
+  fetch("data.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){
+    T=(j.trenes||[]).map(function(x){return [x.fecha,x.prog,x.num||"—",x.tipo||"",x.origen||"",x.via||"",x.est||"",x.pos||null,x.id]});
+    META="Datos automáticos · actualizado "+j.generado_local+((j.avisos&&j.avisos.length)?" · Avisos: "+j.avisos.join(" · "):"");
+    render();
+  }).catch(function(){META="No se pudo cargar data.json";render()});
+}
+(async function(){
+  try{
+    if(!window.claude)return;
+    var u=await claude.use("user");if(u)uid=await u.id();
+    var d=await claude.use("db");if(d&&uid){db=d;load()}
+  }catch(e){}
+})();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});
+</script></body></html>
